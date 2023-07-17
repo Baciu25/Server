@@ -1,5 +1,7 @@
 import express from "express";
 import db from "./db.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 const homepage = `
@@ -49,4 +51,6 @@ app.get("/search", (req, res) => {
 // /settings
 // /json
 
-app.listen(9000, () => console.log("Server is running on port 9000"));
+app.listen(process.envPORT, () =>
+  console.log("Server is running on port" + process.env.PORT)
+);
